@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model RFQ {
+  id          String   @id @default(cuid())
+  guestId     String
+  name        String
+  email       String
+  quantity    Int
+  material    String
+  notes       String?
+  partPath    String
+  drawingPath String?
+  createdAt   DateTime @default(now())
+  status      String   @default("new")
+}
